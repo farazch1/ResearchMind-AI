@@ -1,7 +1,15 @@
+import Navbar from "@/components/landing/Navbar";
+import Hero from "@/components/landing/Hero";
+import Features from "@/components/landing/Features";
+import Footer from "@/components/landing/Footer";
+
 export default function Home() {
   return (
-    <main>
-      <h1>ResearchMind AI</h1>
+    <main className="min-h-screen bg-black text-white">
+      <Navbar />
+      <Hero />
+      <Features />
+      {<Footer />}
     </main>
   );
 }
