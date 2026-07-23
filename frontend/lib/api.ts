@@ -1,7 +1,8 @@
-const API_URL = "http://127.0.0.1:8000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
 /**
- * Upload a PDF to the backend
+ * Upload PDF
  */
 export async function uploadPDF(file: File) {
   const formData = new FormData();
@@ -13,15 +14,14 @@ export async function uploadPDF(file: File) {
   });
 
   if (!response.ok) {
-    const error = await response.text();
-    throw new Error(error || "Failed to upload PDF");
+    throw new Error(await response.text());
   }
 
   return response.json();
 }
 
 /**
- * Ask a question about the uploaded document
+ * Ask Question
  */
 export async function askQuestion(question: string) {
   const response = await fetch(`${API_URL}/ask`, {
@@ -29,27 +29,24 @@ export async function askQuestion(question: string) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      question,
-    }),
+    body: JSON.stringify({ question }),
   });
 
   if (!response.ok) {
-    const error = await response.text();
-    throw new Error(error || "Failed to get AI response");
+    throw new Error(await response.text());
   }
 
   return response.json();
 }
 
 /**
- * Health check (optional)
+ * Health Check
  */
 export async function healthCheck() {
   const response = await fetch(`${API_URL}/`);
 
   if (!response.ok) {
-    throw new Error("Backend is not reachable");
+    throw new Error("Backend unavailable");
   }
 
   return response.json();

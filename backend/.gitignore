@@ -1,22 +1,36 @@
 # Python
 backend/.venv/
-__pycache__/
-*.pyc
+.venv/
+venv/
 
-# Node
-frontend/node_modules/
-frontend/.next/
+__pycache__/
+*.py[cod]
+*.pyo
 
 # Environment
 .env
 .env.local
 
+# Uploaded PDFs
+uploads/
+backend/uploads/
+
+# Chroma Database
+chroma_db/
+backend/chroma_db/
+
 # VS Code
 .vscode/
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
+
 # Python cache
 **/__pycache__/
-*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
