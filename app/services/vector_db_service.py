@@ -3,12 +3,12 @@ from langchain_community.vectorstores import Chroma
 
 from app.services.embedding_service import get_embedding_model
 
-# Root folder for all vector databases
-CHROMA_ROOT = Path("chroma_db")
-CHROMA_ROOT.mkdir(exist_ok=True)
+# Root folder for vector databases stored in system /tmp directory
+CHROMA_ROOT = Path("/tmp/chroma_db")
+CHROMA_ROOT.mkdir(parents=True, exist_ok=True)
 
-# Stores the currently active database name
-ACTIVE_DB_FILE = Path("active_db.txt")
+# Stores the currently active database name in system /tmp directory
+ACTIVE_DB_FILE = Path("/tmp/active_db.txt")
 
 
 def create_vector_database(chunks, db_name: str):
